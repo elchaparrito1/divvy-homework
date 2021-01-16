@@ -1,25 +1,35 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import { css } from '@emotion/core'
-import { Home } from './home'
+import Dashboard from './pages/Dashboard/Dashboard'
+import Chart from './pages/Chart/Chart'
+import Users from './pages/Users/Users'
+import UserProfile from './pages/UserProfile/UserProfile'
+import TransEdit from './pages/TransEdit/TransEdit'
 
 function AppRouter () {
   return (
     <Router>
       <div css={layoutStyle}>
-        <nav css={navStyle}>
+        <nav css={navStyle} style={{ backgroundColor: 'orange' }}>
           <ul >
             <li>
-              <Link to='/'>Home</Link>
+              <Link to='/'>Dashboard</Link>
             </li>
             <li>
-              <Link to='/another'>Another route</Link>
+              <Link to='/users'>Users</Link>
+            </li>
+            <li>
+              <Link to='/chart'>Chart</Link>
             </li>
           </ul>
         </nav>
         <div className='main-content' css={contentStyle}>
-          <Route component={Home} exact path='/' />
-          <Route component={() => (<div>Content for /another route</div>)} exact path='/another' />
+          <Route component={Dashboard} exact path='/' />
+          <Route component={Users} exact path='/users' />
+          <Route component={Chart} exact path='/chart' />
+          <Route component={UserProfile} exact path='/user/:id' />
+          <Route component={TransEdit} exact path='/transaction-edit/:id' />
         </div>
       </div>
     </Router>

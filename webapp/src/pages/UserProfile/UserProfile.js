@@ -1,10 +1,10 @@
 import React, { Fragment } from 'react'
 
-export function Home () {
+export default function UserProfile () {
   return (
     <Fragment>
       {/* <Link to='/another'>Another route</Link> */}
-      <div>Ready, steady, go!</div>
+      <div>Ready, steady, Users!</div>
     </Fragment>
   )
 }
