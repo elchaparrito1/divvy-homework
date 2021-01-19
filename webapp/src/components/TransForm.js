@@ -67,7 +67,7 @@ export default function TransForm (props) {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    props.onChange(transInputs)
+    props.handleUpdate(transInputs)
     setTrans(initialValue)
     setOpenTrans(false)
   }
@@ -122,5 +122,5 @@ export default function TransForm (props) {
 }
 
 TransForm.propTypes = {
-  onChange: PropTypes.func
+  handleUpdate: PropTypes.func
 }

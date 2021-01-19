@@ -10,36 +10,44 @@ export default function TransFilter (props) {
   const handleFilter = (e) => {
     e.preventDefault()
     const filteredData = props.data.filter(obj => obj.amount >= min && obj.amount <= max)
-    console.log(filteredData)
-    props.onChange(filteredData)
+    props.handleFilter(filteredData)
   }
 
-  console.log(min, max)
+  const handleReset = () => {
+    props.handleReset()
+  }
 
   return (
     <Fragment>
-      <form onSubmit={handleFilter}>
-        <label>
+      { props.filtered
+        ? (
+          <button onClick={handleReset}>Reset</button>
+        ) : (
+          <form onSubmit={handleFilter}>
+            <label>
           Min
-          <input name='min'
-            onChange={e => setMin(e.target.value)}
-            type='number'
-            value={min} />
-        </label>
-        <label>
+              <input name='min'
+                onChange={e => setMin(e.target.value)}
+                type='number'
+                value={min} />
+            </label>
+            <label>
           Max
-          <input name='max'
-            onChange={e => setMax(e.target.value)}
-            type='number'
-            value={max} />
-        </label>
-        <input type='submit' value='Filter' />
-      </form>
+              <input name='max'
+                onChange={e => setMax(e.target.value)}
+                type='number'
+                value={max} />
+            </label>
+            <input type='submit' value='Filter' />
+          </form>
+        )}
     </Fragment>
   )
 }
 
 TransFilter.propTypes = {
-  onChange: PropTypes.func,
-  data: PropTypes.array
+  handleFilter: PropTypes.func,
+  handleReset: PropTypes.func,
+  data: PropTypes.array,
+  filtered: PropTypes.bool
 }

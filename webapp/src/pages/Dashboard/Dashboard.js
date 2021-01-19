@@ -64,23 +64,29 @@ const dummyData = [
 
 export default function Dashboard () {
   const [data, setData] = useState(dummyData)
+  const [filtered, setFiltered] = useState(false)
 
   const handleUpdate = (newValue) => {
     setData(data => [...data, newValue])
   }
 
   const handleFilter = (newData) => {
-    console.log(newData)
     setData(newData)
+    setFiltered(true)
+  }
+
+  const handleReset = () => {
+    setData(dummyData)
+    setFiltered(false)
   }
 
   return (
     <Fragment>
       <Layout>
         <h1>Expense Report</h1>
-        <TransFilter data={data} onChange={handleFilter} />
+        <TransFilter data={data} filtered={filtered} handleFilter={handleFilter} handleReset={handleReset} />
         <TransComp data={data} />
-        <TransForm onChange={handleUpdate} />
+        <TransForm handleUpdate={handleUpdate} />
       </Layout>
     </Fragment>
   )
