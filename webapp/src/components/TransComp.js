@@ -2,6 +2,7 @@
 import React, { Fragment } from 'react'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
+import Roman from '../helpers/Roman'
 
 export default function TransComp (props) {
   // console.log(transInputs)
@@ -27,12 +28,12 @@ export default function TransComp (props) {
               <tr key={transData.id}>
                 <td><Link to={`/transaction-edit/${transData.id}`}>Edit</Link></td>
                 <td>{transData.id}</td>
-                <td>{transData.userId}</td>
+                <td>{Roman(transData.userId)}</td>
                 <td>{transData.descrip}</td>
                 <td>{transData.merchantId}</td>
                 <td>{transData.debit ? `X` : ''}</td>
                 <td>{transData.credit ? `X` : ''}</td>
-                <td>{transData.amount}</td>
+                <td>{Roman(transData.amount)}</td>
               </tr>
             )
           })}

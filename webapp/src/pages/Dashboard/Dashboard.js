@@ -66,15 +66,18 @@ export default function Dashboard () {
   const [data, setData] = useState(dummyData)
   const [filtered, setFiltered] = useState(false)
 
+  // function to add new transaction to list of total expenditures
   const handleUpdate = (newValue) => {
     setData(data => [...data, newValue])
   }
 
+  // function to filter transactions based on min and max amounts
   const handleFilter = (newData) => {
     setData(newData)
     setFiltered(true)
   }
 
+  // function to reset filter
   const handleReset = () => {
     setData(dummyData)
     setFiltered(false)

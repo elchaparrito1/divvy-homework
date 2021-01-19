@@ -38,6 +38,7 @@ export default function TransForm (props) {
   const [creditDebit, setCreditDebit] = useState('Credit')
   const [openTrans, setOpenTrans] = useState(false)
 
+  // function runs on load to populate users from db
   const returnUsers = () => {
     return (
       <select name={transInputs.userId}
@@ -51,6 +52,7 @@ export default function TransForm (props) {
     )
   }
 
+  // function runs on load to populate merchants from db
   const returnMerchants = () => {
     return (
       <select name={transInputs.merchantId}
@@ -65,6 +67,7 @@ export default function TransForm (props) {
     )
   }
 
+  // handles submission of created transaction - state gets handled by parent component
   const handleSubmit = (e) => {
     e.preventDefault()
     props.handleUpdate(transInputs)

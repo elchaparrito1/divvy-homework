@@ -7,12 +7,14 @@ export default function TransFilter (props) {
   const [min, setMin] = useState(0)
   const [max, setMax] = useState(0)
 
+  // function to handle filter functionality and edit state of parent component
   const handleFilter = (e) => {
     e.preventDefault()
     const filteredData = props.data.filter(obj => obj.amount >= min && obj.amount <= max)
     props.handleFilter(filteredData)
   }
 
+  // function to reset filter parameters
   const handleReset = () => {
     props.handleReset()
   }
