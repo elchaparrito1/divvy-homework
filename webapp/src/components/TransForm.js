@@ -75,8 +75,6 @@ export default function TransForm (props) {
     setOpenTrans(false)
   }
 
-  // console.log(transInputs)
-
   return (
     <Fragment>
       <button onClick={() => setOpenTrans(true)}>Transaction+</button>

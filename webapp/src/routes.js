@@ -22,10 +22,6 @@ function AppRouter () {
             <li>
               <Link to='/chart'>Chart</Link>
             </li>
-            <li>
-              <label htmlFor='cb'>Roman Numerals</label>
-              <input css={checkboxStyle} id='cb' type='checkbox' />
-            </li>
           </ul>
         </nav>
         <div className='main-content' css={contentStyle}>
@@ -64,28 +60,4 @@ const navStyle = css`
 
 const contentStyle = css`
   grid-row: 2;
-`
-
-const checkboxStyle = css`
-  &:before {
-    transition-timing-function: cubic-bezier(.075, .820, .165, 1);
-    border: 2px solid;
-    border-radius: 0;
-    background-color: white;
-    border-color: transparent;
-    box-sizing: border-box;
-    color: #3acfb6;
-    content: close-quote;
-    display: inline-block;
-    height: 12px;
-    outline: 2px solid #3acfb6;
-    transition-duration: .5s;
-    transition-property: background-color, border-color;
-    width: 12px;
-  }
-
-  &:checked:before {
-    background-color: #3acfb6;
-    border-color: white;
-  }
 `

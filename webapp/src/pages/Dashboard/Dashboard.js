@@ -1,16 +1,17 @@
 import React, { useState, Fragment } from 'react'
 import Layout from '../../components/Layout'
-// import styled from '@emotion/styled'
 import TransComp from '../../components/TransComp'
 import TransForm from '../../components/TransForm'
 import TransFilter from '../../components/TransFilter'
+import RomanToggleBtn from '../../components/RomanToggleBtn'
+import RomanContext from '../../components/RomanContext'
 
 const dummyData = [
   {
     id: '123',
     userId: '34',
     descrip: 'I bought sum butta!',
-    merchantId: '23499D',
+    merchantId: '23499',
     debit: false,
     credit: true,
     amount: 34
@@ -19,7 +20,7 @@ const dummyData = [
     id: '124',
     userId: '34',
     descrip: 'I bought a boat!',
-    merchantId: '23433F',
+    merchantId: '23433',
     debit: true,
     credit: false,
     amount: 3400
@@ -28,7 +29,7 @@ const dummyData = [
     id: '125',
     userId: '36',
     descrip: 'I bought a trailer for the boat!',
-    merchantId: '23433F',
+    merchantId: '23433',
     debit: false,
     credit: true,
     amount: 1500
@@ -37,7 +38,7 @@ const dummyData = [
     id: '126',
     userId: '34',
     descrip: 'Skis!',
-    merchantId: '23499D',
+    merchantId: '23499',
     debit: false,
     credit: true,
     amount: 10000
@@ -46,7 +47,7 @@ const dummyData = [
     id: '127',
     userId: '36',
     descrip: 'Liquor at office party',
-    merchantId: '23499D',
+    merchantId: '23499',
     debit: false,
     credit: true,
     amount: 340
@@ -55,7 +56,7 @@ const dummyData = [
     id: '128',
     userId: '35',
     descrip: 'Backstreet Boys tickets',
-    merchantId: '23499D',
+    merchantId: '23499',
     debit: false,
     credit: true,
     amount: 1000
@@ -65,6 +66,7 @@ const dummyData = [
 export default function Dashboard () {
   const [data, setData] = useState(dummyData)
   const [filtered, setFiltered] = useState(false)
+  const [toggle, setToggle] = useState(false)
 
   // function to add new transaction to list of total expenditures
   const handleUpdate = (newValue) => {
@@ -87,9 +89,12 @@ export default function Dashboard () {
     <Fragment>
       <Layout>
         <h1>Expense Report</h1>
-        <TransFilter data={data} filtered={filtered} handleFilter={handleFilter} handleReset={handleReset} />
-        <TransComp data={data} />
-        <TransForm handleUpdate={handleUpdate} />
+        <RomanContext.Provider value={{ toggle, setToggle }}>
+          <RomanToggleBtn />
+          <TransFilter data={data} filtered={filtered} handleFilter={handleFilter} handleReset={handleReset} />
+          <TransComp data={data} />
+          <TransForm handleUpdate={handleUpdate} />
+        </RomanContext.Provider>
       </Layout>
     </Fragment>
   )

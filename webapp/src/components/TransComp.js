@@ -1,11 +1,13 @@
 /* eslint-disable jsx-a11y/no-onchange */
-import React, { Fragment } from 'react'
+import React, { Fragment, useContext } from 'react'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import Roman from '../helpers/Roman'
+import RomanContext from './RomanContext'
 
 export default function TransComp (props) {
   // console.log(transInputs)
+  const { toggle } = useContext(RomanContext)
 
   return (
     <Fragment>
@@ -27,13 +29,13 @@ export default function TransComp (props) {
             return (
               <tr key={transData.id}>
                 <td><Link to={`/transaction-edit/${transData.id}`}>Edit</Link></td>
-                <td>{transData.id}</td>
-                <td>{Roman(transData.userId)}</td>
+                <td>{toggle ? Roman(transData.id) : transData.id}</td>
+                <td>{toggle ? Roman(transData.userId) : transData.userId}</td>
                 <td>{transData.descrip}</td>
-                <td>{transData.merchantId}</td>
+                <td>{toggle ? Roman(transData.merchantId) : transData.merchantId}</td>
                 <td>{transData.debit ? `X` : ''}</td>
                 <td>{transData.credit ? `X` : ''}</td>
-                <td>{Roman(transData.amount)}</td>
+                <td>{toggle ? Roman(transData.amount) : transData.amount}</td>
               </tr>
             )
           })}
