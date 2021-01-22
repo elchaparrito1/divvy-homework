@@ -1,23 +1,27 @@
-import React, { Fragment, useContext } from 'react'
+import React, { Fragment } from 'react'
 import { css } from '@emotion/core'
-import RomanContext from './RomanContext'
+import PropTypes from 'prop-types'
 
-export default function RomanToggleBtn () {
-  const { setToggle } = useContext(RomanContext)
-  const { toggle } = useContext(RomanContext)
-
-  const handleRomanToggle = () => {
-    setToggle(!toggle)
-  }
-  // console.log(toggle)
-
+export default function RomanToggleBtn (props) {
   return (
     <Fragment>
       <label htmlFor='cb'>Roman Numerals
-        <input id='cb' onChange={handleRomanToggle} type='checkbox' />
+        <input
+          checked={props.toggle}
+          css={checkboxStyle}
+          id='cb'
+          onChange={props.handleToggle}
+          style={{ backgroundColor: props.toggle ? '#3acfb6' : 'white' }}
+          type='checkbox'
+        />
       </label>
     </Fragment>
   )
+}
+
+RomanToggleBtn.propTypes = {
+  toggle: PropTypes.bool,
+  handleToggle: PropTypes.func
 }
 
 const checkboxStyle = css`
@@ -47,7 +51,5 @@ const checkboxStyle = css`
     border-color: white;
   }
 
-  &[type="checkbox"]:checked {
-  background: #D9534F -19px top no-repeat;
 }
 `

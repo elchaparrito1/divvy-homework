@@ -42,6 +42,9 @@ const layoutStyle = css`
     display: grid;
     grid-row-gap: 24px;
     padding: 8px;
+    background: #131419;
+    color: #F3F1F1;
+    font-family: 'Lato', sans-serif;
 `
 
 const navStyle = css`

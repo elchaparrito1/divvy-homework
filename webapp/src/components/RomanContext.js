@@ -1,5 +1,5 @@
 import { createContext } from 'react'
 
-const RomanContext = createContext({ toggle: false, setToggle: (toggleState) => {} })
+const RomanContext = createContext()
 
 export default RomanContext

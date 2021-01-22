@@ -16,10 +16,10 @@ const users = [
 
 const merchants = [
   {
-    id: '23433F'
+    id: '23433'
   },
   {
-    id: '23499D'
+    id: '23499'
   }
 ]
 
@@ -30,12 +30,11 @@ export default function TransForm (props) {
     descrip: '',
     merchantId: merchants[0].id,
     debit: false,
-    credit: false,
+    credit: true,
     amount: 0
   }
 
   const [transInputs, setTrans] = useState(initialValue)
-  const [creditDebit, setCreditDebit] = useState('Credit')
   const [openTrans, setOpenTrans] = useState(false)
 
   // function runs on load to populate users from db
@@ -75,6 +74,12 @@ export default function TransForm (props) {
     setOpenTrans(false)
   }
 
+  const handleMOP = (e) => {
+    e.target.value === 'Credit'
+      ? setTrans({ ...transInputs, credit: true, debit: false })
+      : setTrans({ ...transInputs, credit: false, debit: true })
+  }
+
   return (
     <Fragment>
       <button onClick={() => setOpenTrans(true)}>Transaction+</button>
@@ -98,12 +103,11 @@ export default function TransForm (props) {
             </label>
             <label>
               Credit/Debit
-              <select name={creditDebit}
-                onChange={e => setCreditDebit(e.currentTarget.value)}
-                value={creditDebit}
+              <select name='mop'
+                onChange={handleMOP}
               >
-                <option value='Credit'>Credit</option>
-                <option value='Debit'>Debit</option>
+                <option value='credit'>Credit</option>
+                <option value='debit'>Debit</option>
               </select>
             </label>
             <label>

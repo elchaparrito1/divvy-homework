@@ -1,5 +1,5 @@
 import React, { useState, Fragment } from 'react'
-import Layout from '../../components/Layout'
+import PageContainer from '../../components/PageContainer'
 import TransComp from '../../components/TransComp'
 import TransForm from '../../components/TransForm'
 import TransFilter from '../../components/TransFilter'
@@ -85,17 +85,22 @@ export default function Dashboard () {
     setFiltered(false)
   }
 
+  // function to handle roman numeral button toggle in RomanToggleBtn component
+  const handleToggle = () => {
+    setToggle(!toggle)
+  }
+
   return (
     <Fragment>
-      <Layout>
+      <PageContainer>
         <h1>Expense Report</h1>
-        <RomanContext.Provider value={{ toggle, setToggle }}>
-          <RomanToggleBtn />
+        <RomanContext.Provider value={{ toggle }}>
+          <RomanToggleBtn handleToggle={handleToggle} toggle={toggle} />
           <TransFilter data={data} filtered={filtered} handleFilter={handleFilter} handleReset={handleReset} />
           <TransComp data={data} />
           <TransForm handleUpdate={handleUpdate} />
         </RomanContext.Provider>
-      </Layout>
+      </PageContainer>
     </Fragment>
   )
 }

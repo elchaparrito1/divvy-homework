@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import Roman from '../helpers/Roman'
 import RomanContext from './RomanContext'
+import cardImg from '../images/cardImg.png'
 
 export default function TransComp (props) {
   // console.log(transInputs)
@@ -33,8 +34,8 @@ export default function TransComp (props) {
                 <td>{toggle ? Roman(transData.userId) : transData.userId}</td>
                 <td>{transData.descrip}</td>
                 <td>{toggle ? Roman(transData.merchantId) : transData.merchantId}</td>
-                <td>{transData.debit ? `X` : ''}</td>
-                <td>{transData.credit ? `X` : ''}</td>
+                <td>{transData.debit ? <img alt='credit card icon for debit' src={cardImg} width='20px' /> : ''}</td>
+                <td>{transData.credit ? <img alt='credit card icon for credit' src={cardImg} width='20px' /> : ''}</td>
                 <td>{toggle ? Roman(transData.amount) : transData.amount}</td>
               </tr>
             )
