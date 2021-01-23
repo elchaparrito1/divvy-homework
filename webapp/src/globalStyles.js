@@ -1,60 +1,70 @@
-import styled from '@emotion/styled'
+import { css } from '@emotion/core'
 
-export const Container = styled.div(props => ({
-  display: 'flex',
-  flexDirection: props.column && 'column'
-}))
-
-/* The switch - the box around the slider */
-export const Switch = styled('label')`
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
-
-  & > input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-  }
+export const submitStyle = css`
+margin: 15px;
+cursor: pointer;
+height: 30px;
+background: #4d5166;
+border: none;
+outline: none;
+border-radius: 40px;
+padding: 5px 15px;
+color: #fff;
+font-size: 16px;
+box-shadow: -2px -2px 6px rgba(255,255,255,0.1),
+          2px 2px 6px rgba(0,0,0,0.8);
+          
+&:hover {
+color: #03a9f4;
+}
+&:focus {
+color: #03a9f4;
+}
+&:active {
+color: #03a9f4;
+box-shadow: inset -2px -2px 6px rgba(255,255,255,0.1),
+          inset 2px 2px 6px rgba(0,0,0,0.8);
+}
+`
+export const inputStyle = css`
+    margin: 15px;
+    height: 30px;
+    background: #4d5166;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    padding: 5px 15px;
+    color: #fff;
+    font-size: 16px;
+    color: #03a9f4;
+    box-shadow: inset -2px -2px 6px rgba(255,255,255,0.1),
+              inset 2px 2px 6px rgba(0,0,0,0.8);
 `
 
-/* The slider */
-export const Slider = styled('span')`
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
+export const editLinkStyle = css`
+  color: #03a9f4;
 
-  &:before {
-    position: absolute;
-    content: "";
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    -webkit-transition: .4s;
-    transition: .4s;
+  &::after {
+        content: '';
+        display: block;
+        width: 0;
+        height: 2px;
+        background: #03a9f4;
+        transition: width .3s;
+        margin-top: 4px;
+        
+    }
+
+    &:hover {
+        color: #03a9f4;
+        opacity: 1;
+    }
+
+    &:hover::after {
+        width: 100%;
+    }
+  
+  &:link {
+  text-decoration: none;
   }
-
 `
-
-// input:checked + .slider {
-//   background-color: #2196F3;
-// }
-
-// input:focus + .slider {
-//   box-shadow: 0 0 1px #2196F3;
-// }
-
-// input:checked + .slider:before {
-//   -webkit-transform: translateX(26px);
-//   -ms-transform: translateX(26px);
-//   transform: translateX(26px);
-// }

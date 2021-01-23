@@ -5,6 +5,7 @@ import TransForm from '../../components/TransForm'
 import TransFilter from '../../components/TransFilter'
 import RomanToggleBtn from '../../components/RomanToggleBtn'
 import RomanContext from '../../components/RomanContext'
+import { css } from '@emotion/core'
 
 const dummyData = [
   {
@@ -93,7 +94,7 @@ export default function Dashboard () {
   return (
     <Fragment>
       <PageContainer>
-        <h1>Expense Report</h1>
+        <h1 css={titleStyle}>EXPENSE REPORT</h1>
         <RomanContext.Provider value={{ toggle }}>
           <RomanToggleBtn handleToggle={handleToggle} toggle={toggle} />
           <TransFilter data={data} filtered={filtered} handleFilter={handleFilter} handleReset={handleReset} />
@@ -104,3 +105,8 @@ export default function Dashboard () {
     </Fragment>
   )
 }
+
+const titleStyle = css`
+  position: relative;
+  text-align: center;
+`

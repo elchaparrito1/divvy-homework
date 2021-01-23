@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import Roman from '../helpers/Roman'
 import RomanContext from './RomanContext'
+import { editLinkStyle } from '../globalStyles'
 import cardImg from '../images/cardImg.png'
 
 export default function TransComp (props) {
@@ -29,7 +30,7 @@ export default function TransComp (props) {
           {props.data.map((transData) => {
             return (
               <tr key={transData.id}>
-                <td><Link to={`/transaction-edit/${transData.id}`}>Edit</Link></td>
+                <td><Link css={editLinkStyle} to={`/transaction-edit/${transData.id}`}>Edit</Link></td>
                 <td>{toggle ? Roman(transData.id) : transData.id}</td>
                 <td>{toggle ? Roman(transData.userId) : transData.userId}</td>
                 <td>{transData.descrip}</td>

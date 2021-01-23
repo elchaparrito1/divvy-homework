@@ -21,16 +21,16 @@ const containerStyle = css`
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #131419;
+  background-color: #4d5166;
 `
 
 const wrapperStyle = css`
   position: relative;
   width: 80%;
   padding: 40px 40px 60px;
-  background: #131419;
+  background: #4d5166;
   border-radius: 10px;
-  text-align: center;
-  box-shadow: -5px -5px 10px rgba(255,255,255,0.05),
-              5px 5px 15px rgba(0,0,0,0.5);
+  text-align: left;
+  box-shadow: 12px 12px 30px #2b2d39,
+             -12px -12px 30px #6f7593;
 `
