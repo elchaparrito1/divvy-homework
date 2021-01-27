@@ -63,6 +63,7 @@ export const editLinkStyle = css`
     &:hover {
         color: #03a9f4;
         opacity: 1;
+        cursor: pointer;
     }
 
     &:hover::after {

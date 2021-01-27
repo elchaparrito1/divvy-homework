@@ -36,7 +36,9 @@ export default function TransFilter (props) {
     <Fragment>
       { props.filtered
         ? (
-          <button css={submitStyle} onClick={handleReset}>Reset</button>
+          <div css={centerRow}>
+            <button css={submitStyle} onClick={handleReset}>Reset</button>
+          </div>
         ) : (
           <div css={centerRow}>
             <div>

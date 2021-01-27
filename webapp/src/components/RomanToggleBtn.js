@@ -1,20 +1,23 @@
 import React, { Fragment } from 'react'
 import { css } from '@emotion/core'
 import PropTypes from 'prop-types'
+import { row } from '../globalStyles'
 
 export default function RomanToggleBtn (props) {
   return (
     <Fragment>
-      <label htmlFor='cb'>Roman Numerals:
-        <input
-          checked={props.toggle}
-          css={checkboxStyle}
-          id='cb'
-          onChange={props.handleToggle}
-          style={{ backgroundColor: props.toggle ? '#3acfb6' : 'white' }}
-          type='checkbox'
-        />
-      </label>
+      <div css={row}>
+        <label htmlFor='cb'>Roman Numerals:
+          <input
+            checked={props.toggle}
+            css={checkboxStyle}
+            id='cb'
+            onChange={props.handleToggle}
+            style={{ backgroundColor: props.toggle ? '#3acfb6' : 'white' }}
+            type='checkbox'
+          />
+        </label>
+      </div>
     </Fragment>
   )
 }

@@ -1,13 +1,13 @@
 /* eslint-disable jsx-a11y/no-onchange */
 import React, { useState, Fragment, useContext } from 'react'
-import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import Roman from '../helpers/Roman'
 import RomanContext from './RomanContext'
-import { editLinkStyle, centerRow } from '../globalStyles'
+import { centerRow } from '../globalStyles'
 import cardImg from '../images/cardImg.png'
 import Pagination from './Pagination'
 import Fade from 'react-reveal/Fade'
+import { css } from '@emotion/core'
 
 export default function TransComp (props) {
   const { toggle } = useContext(RomanContext)
@@ -28,7 +28,7 @@ export default function TransComp (props) {
         <table style={{ marginTop: '40px' }}>
           <thead>
             <tr>
-              <th>Edit</th>
+              <th />
               <th>ID</th>
               <th>User ID</th>
               <th>Description</th>
@@ -43,7 +43,7 @@ export default function TransComp (props) {
               return (
                 <tr key={transData.id}>
                   <Fade right>
-                    <td><Link css={editLinkStyle} to={`/transaction-edit/${transData.id}`}>Edit</Link></td>
+                    <td><button css={deleteButton} onClick={(e) => props.handleDelete(e.target.value)} value={transData.id}>Remove</button></td>
                     <td>{toggle ? Roman(transData.id) : transData.id}</td>
                     <td>{toggle ? Roman(transData.userId) : transData.userId}</td>
                     <td>{transData.descrip}</td>
@@ -68,5 +68,40 @@ export default function TransComp (props) {
 }
 
 TransComp.propTypes = {
-  data: PropTypes.array
+  data: PropTypes.array,
+  handleDelete: PropTypes.func
 }
+
+const deleteButton = css`
+  background: transparent;
+  box-shadow: 0px 0px 0px transparent;
+  border: 0px solid transparent;
+  text-shadow: 0px 0px 0px transparent;
+  font-size: 16px;
+  color: #03a9f4;
+
+&::after {
+      content: '';
+      display: block;
+      width: 0;
+      height: 2px;
+      background: #03a9f4;
+      transition: width .3s;
+      margin-top: 4px;
+      
+  }
+
+  &:hover {
+      color: #03a9f4;
+      opacity: 1;
+      cursor: pointer;
+  }
+
+  &:hover::after {
+      width: 100%;
+  }
+
+&:link {
+text-decoration: none;
+}
+`

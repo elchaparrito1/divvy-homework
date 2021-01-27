@@ -1,10 +1,15 @@
 import React, { Fragment } from 'react'
+import PageContainer from '../../components/PageContainer'
+import DoughnutChart from '../../components/DoughnutChart'
+import { titleStyle } from '../../globalStyles'
 
 export default function Chart () {
   return (
     <Fragment>
-      {/* <Link to='/another'>Another route</Link> */}
-      <div>Ready, steady, Chart!</div>
+      <PageContainer>
+        <h1 css={titleStyle}>EXPENSES BASED ON CATEGORIES</h1>
+        <DoughnutChart />
+      </PageContainer>
     </Fragment>
   )
 }

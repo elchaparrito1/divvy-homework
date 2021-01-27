@@ -78,7 +78,7 @@ export default function Users () {
                         name='id'
                         onChange={handleUpdate}
                         readOnly
-                        style={{ color: 'orange', marginBottom: '-5px' }}
+                        style={{ color: '#FF9800', marginBottom: '-5px' }}
                         type='text'
                         value={userEdit.id}
                       />

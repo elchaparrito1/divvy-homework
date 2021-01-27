@@ -35,6 +35,15 @@ export default function Dashboard () {
     setToggle(!toggle)
   }
 
+  // function to remove transaction from table
+  const handleDelete = (val) => {
+    console.log(val)
+    let deleteData = data
+    let newData = deleteData.filter((obj) => obj.id !== parseInt(val))
+    console.log(newData)
+    setData(newData)
+  }
+
   return (
     <Fragment>
       <PageContainer>
@@ -42,7 +51,7 @@ export default function Dashboard () {
         <RomanContext.Provider value={{ toggle }}>
           <RomanToggleBtn handleToggle={handleToggle} toggle={toggle} />
           <TransFilter data={data} filtered={filtered} handleFilter={handleFilter} handleReset={handleReset} />
-          <TransComp data={data} />
+          <TransComp data={data} handleDelete={handleDelete} />
           <TransForm handleUpdate={handleUpdate} />
         </RomanContext.Provider>
       </PageContainer>
