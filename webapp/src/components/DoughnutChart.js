@@ -7,6 +7,7 @@ import { css } from '@emotion/core'
 
 const categories = ['Travel', 'Office Supplies', 'Vendor', 'Misc', 'Fees']
 
+// function to obtain category expenditures from dummy data
 const mountData = () => {
   let result = 0
   const newData = []

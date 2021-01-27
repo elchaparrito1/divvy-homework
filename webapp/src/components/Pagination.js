@@ -5,6 +5,7 @@ import { column, submitStyle, centerRow } from '../globalStyles'
 export default function Pagination ({ transPerPage, totalTrans, paginate }) {
   const pageNumbers = []
 
+  // for loop to determine page numbers needed
   for (let i = 1; i <= Math.ceil(totalTrans / transPerPage); i++) {
     pageNumbers.push(i)
   }

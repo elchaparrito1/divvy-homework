@@ -1,3 +1,4 @@
+// Helper function for filtering categories and their total amount
 export default function categoryTotals (data, category) {
   const filteredCategory = data.filter(obj => obj.category === category)
 

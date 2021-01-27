@@ -1,3 +1,4 @@
+// Helper function for roman numeral conversion
 export default function convertToRoman (num) {
   const roman = {
     M: 1000,
