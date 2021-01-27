@@ -1,12 +1,26 @@
 import React, { Fragment } from 'react'
 import { Doughnut } from 'react-chartjs-2'
 import { centerRow } from '../globalStyles'
+import categoryTotals from '../helpers/categoryTotals'
+import { dummyTransData } from '../dummyData'
+import { css } from '@emotion/core'
+
+const categories = ['Travel', 'Office Supplies', 'Vendor', 'Misc', 'Fees']
+
+const mountData = () => {
+  let result = 0
+  const newData = []
+  categories.forEach((label) => {
+    result = categoryTotals(dummyTransData, label)
+    newData.push(result)
+  })
+  return newData
+}
 
 const chartData = {
-  labels: ['Travel', 'Office Supplies', 'Vendor', 'Misc', 'Fees'],
+  labels: categories,
   datasets: [
     {
-      label: 'Rainfall',
       backgroundColor: [
         '#F5FAFD',
         '#FF9800',
@@ -21,7 +35,7 @@ const chartData = {
         '#4c5b61',
         '#7b1fa2'
       ],
-      data: [65, 59, 80, 81, 56]
+      data: mountData()
     }
   ]
 }
@@ -30,24 +44,33 @@ export default function DoughnutChart () {
   return (
     <Fragment>
       <div css={centerRow}>
-        <Doughnut
-          data={chartData}
-          options={{
-            title: {
-              display: false
-            },
-            legend: {
-              display: true,
-              position: 'right',
-              labels: {
-                fontColor: 'white',
-                fontSize: 20,
-                fontFamily: 'Lato'
+        <div css={chartStyle}>
+          <Doughnut
+            data={chartData}
+            options={{
+              responsive: true,
+              title: {
+                display: false
+              },
+              legend: {
+                display: true,
+                position: 'right',
+                labels: {
+                  fontColor: 'white',
+                  fontSize: 20,
+                  fontFamily: 'Lato'
+                }
               }
-            }
-          }}
-        />
+            }}
+          />
+        </div>
       </div>
     </Fragment>
   )
 }
+
+const chartStyle = css`
+  width: 750px;
+  justify-content: center;
+  align-items: center;
+`

@@ -131,7 +131,7 @@ export default function Users () {
                     <input css={submitStyle} type='submit' value='Submit' />
                   </div>
                   <div css={column}>
-                    <button css={submitStyle} onClick={() => setOpenUser(false)}>Close</button>
+                    <button css={submitStyle} onSubmit={() => setOpenUser(false)}>Close</button>
                   </div>
                 </div>
               </form>

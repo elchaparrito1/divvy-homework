@@ -37,10 +37,8 @@ export default function Dashboard () {
 
   // function to remove transaction from table
   const handleDelete = (val) => {
-    console.log(val)
     let deleteData = data
     let newData = deleteData.filter((obj) => obj.id !== parseInt(val))
-    console.log(newData)
     setData(newData)
   }
 

@@ -21,11 +21,11 @@ export const dummyTransData = [
   {
     id: 125,
     userId: 36,
-    descrip: 'I bought a boat',
+    descrip: 'AWS License',
     category: 'Vendor',
     debit: true,
     credit: false,
-    amount: 15000
+    amount: 1500
   },
   {
     id: 126,
@@ -120,11 +120,11 @@ export const dummyTransData = [
   {
     id: 136,
     userId: 39,
-    descrip: 'Cheesecake',
+    descrip: 'Vending Machine',
     category: 'Misc',
     debit: true,
     credit: false,
-    amount: 40
+    amount: 400
   },
   {
     id: 137,
@@ -143,6 +143,24 @@ export const dummyTransData = [
     debit: false,
     credit: true,
     amount: 1000
+  },
+  {
+    id: 139,
+    userId: 37,
+    descrip: 'WiFi',
+    category: 'Fees',
+    debit: false,
+    credit: true,
+    amount: 1000
+  },
+  {
+    id: 140,
+    userId: 34,
+    descrip: 'Oculus',
+    category: 'Vendor',
+    debit: true,
+    credit: false,
+    amount: 750
   }
 ]
 

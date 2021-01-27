@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/no-onchange */
 import React, { useState, Fragment, useContext } from 'react'
 import PropTypes from 'prop-types'
-import Roman from '../helpers/Roman'
+import Roman from '../helpers/roman'
 import RomanContext from './RomanContext'
 import { centerRow } from '../globalStyles'
 import cardImg from '../images/cardImg.png'

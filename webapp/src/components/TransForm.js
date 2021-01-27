@@ -4,10 +4,10 @@ import PropTypes from 'prop-types'
 import { css } from '@emotion/core'
 import { inputStyle, submitStyle, column, centerRow } from '../globalStyles'
 import { dummyTransData } from '../dummyData'
-import RemoveDups from '../helpers/RemoveDups'
+import removeDups from '../helpers/removeDups'
 
-const users = RemoveDups(dummyTransData.map(({ userId }) => userId))
-const categories = RemoveDups(dummyTransData.map(({ category }) => category))
+const users = removeDups(dummyTransData.map(({ userId }) => userId))
+const categories = removeDups(dummyTransData.map(({ category }) => category))
 
 export default function TransForm (props) {
   const initialValue = {
@@ -133,7 +133,7 @@ export default function TransForm (props) {
                     <input css={submitStyle} type='submit' value='Submit' />
                   </div>
                   <div css={column}>
-                    <button css={submitStyle} onClick={() => setOpenTrans(false)}>Close</button>
+                    <button css={submitStyle} onSubmit={() => setOpenTrans(false)}>Close</button>
                   </div>
                 </div>
               </form>
