@@ -49,6 +49,7 @@ export default function Users () {
     scrollToBottom()
   }
 
+  // function to handle the update to a User's information
   const handleSubmit = (e) => {
     e.preventDefault()
     let newData = data
