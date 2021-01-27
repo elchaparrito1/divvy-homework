@@ -1,5 +1,10 @@
 import { css } from '@emotion/core'
 
+export const titleStyle = css`
+position: relative;
+text-align: center;
+`
+
 export const submitStyle = css`
 margin: 15px;
 cursor: pointer;

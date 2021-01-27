@@ -3,34 +3,18 @@ import React, { useState, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { css } from '@emotion/core'
 import { inputStyle, submitStyle } from '../globalStyles'
+import { dummyTransData } from '../dummyData'
+import RemoveDups from '../helpers/RemoveDups'
 
-const users = [
-  {
-    id: '34'
-  },
-  {
-    id: '35'
-  },
-  {
-    id: '36'
-  }
-]
-
-const merchants = [
-  {
-    id: '23433'
-  },
-  {
-    id: '23499'
-  }
-]
+const users = RemoveDups(dummyTransData.map(({ userId }) => userId))
+const categories = RemoveDups(dummyTransData.map(({ category }) => category))
 
 export default function TransForm (props) {
   const initialValue = {
-    id: '',
-    userId: users[0].id,
+    id: dummyTransData[dummyTransData.length - 1].id + 1,
+    userId: users[0],
     descrip: '',
-    merchantId: merchants[0].id,
+    category: categories[0],
     debit: false,
     credit: true,
     amount: 0
@@ -47,7 +31,7 @@ export default function TransForm (props) {
         onChange={e => setTrans({ ...transInputs, userId: e.currentTarget.value })}
         value={transInputs.userId}>
         {users.map((user) => {
-          const val = user.id
+          const val = user
           return <option key={val} value={val}>{val}</option>
         })}
       </select>
@@ -55,15 +39,15 @@ export default function TransForm (props) {
   }
 
   // function runs on load to populate merchants from db
-  const returnMerchants = () => {
+  const returnCategories = () => {
     return (
       <select css={selectStyle}
-        name={transInputs.merchantId}
-        onChange={e => setTrans({ ...transInputs, merchantId: e.currentTarget.value })}
-        value={transInputs.merchantId}
+        name={transInputs.category}
+        onChange={e => setTrans({ ...transInputs, category: e.currentTarget.value })}
+        value={transInputs.category}
       >
-        {merchants.map((merchant) => {
-          const val = merchant.id
+        {categories.map((category) => {
+          const val = category
           return <option key={val} value={val}>{val}</option>
         })}
       </select>
@@ -74,7 +58,7 @@ export default function TransForm (props) {
   const handleSubmit = (e) => {
     e.preventDefault()
     props.handleUpdate(transInputs)
-    setTrans(initialValue)
+    setTrans({ ...initialValue, id: transInputs.id + 1 })
     setOpenTrans(false)
   }
 
@@ -93,6 +77,10 @@ export default function TransForm (props) {
             <form onSubmit={handleSubmit}>
               <div css={row}>
                 <div css={column}>
+                ID:
+                  <span>{transInputs.id}</span>
+                </div>
+                <div css={column}>
                   <label>
                 User:
                     {returnUsers()}
@@ -108,14 +96,14 @@ export default function TransForm (props) {
                     />
                   </label>
                 </div>
+              </div>
+              <div css={row}>
                 <div css={column}>
                   <label>
                 Merchant:
-                    {returnMerchants()}
+                    {returnCategories()}
                   </label>
                 </div>
-              </div>
-              <div css={row}>
                 <div css={column}>
                   <label>
                 Credit/Debit:

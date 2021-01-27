@@ -2,7 +2,7 @@ import React from 'react'
 import { css } from '@emotion/core'
 import PropTypes from 'prop-types'
 
-export default function Layout (props) {
+export default function PageContainer (props) {
   return (
     <div css={containerStyle}>
       <div css={wrapperStyle}>
@@ -12,7 +12,7 @@ export default function Layout (props) {
   )
 }
 
-Layout.propTypes = {
+PageContainer.propTypes = {
   children: PropTypes.node.isRequired
 }
 

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import { css } from '@emotion/core'
@@ -5,8 +6,6 @@ import { editLinkStyle } from '../src/globalStyles'
 import Dashboard from './pages/Dashboard/Dashboard'
 import Chart from './pages/Chart/Chart'
 import Users from './pages/Users/Users'
-import UserProfile from './pages/UserProfile/UserProfile'
-import TransEdit from './pages/TransEdit/TransEdit'
 
 function AppRouter () {
   return (
@@ -29,8 +28,6 @@ function AppRouter () {
           <Route component={Dashboard} exact path='/' />
           <Route component={Users} exact path='/users' />
           <Route component={Chart} exact path='/chart' />
-          <Route component={UserProfile} exact path='/user/:id' />
-          <Route component={TransEdit} exact path='/transaction-edit/:id' />
         </div>
       </div>
     </Router>
@@ -61,26 +58,6 @@ const navStyle = css`
   grid-row: 1;
   padding: 40px;
   font-size: 20px;
-
-    li::after {
-        content: '';
-        display: block;
-        width: 0;
-        height: 2px;
-        background: #03a9f4;
-        transition: width .3s;
-        margin-top: 4px;
-        
-    }
-
-    li:hover {
-        color: #03a9f4;
-        opacity: 1;
-    }
-
-    li:hover::after {
-        width: 100%;
-    }
 
   & > ul {
       display: flex;

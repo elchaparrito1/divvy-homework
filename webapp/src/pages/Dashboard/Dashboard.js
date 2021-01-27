@@ -5,67 +5,11 @@ import TransForm from '../../components/TransForm'
 import TransFilter from '../../components/TransFilter'
 import RomanToggleBtn from '../../components/RomanToggleBtn'
 import RomanContext from '../../components/RomanContext'
-import { css } from '@emotion/core'
-
-const dummyData = [
-  {
-    id: '123',
-    userId: '34',
-    descrip: 'I bought sum butta!',
-    merchantId: '23499',
-    debit: false,
-    credit: true,
-    amount: 34
-  },
-  {
-    id: '124',
-    userId: '34',
-    descrip: 'I bought a boat!',
-    merchantId: '23433',
-    debit: true,
-    credit: false,
-    amount: 3400
-  },
-  {
-    id: '125',
-    userId: '36',
-    descrip: 'I bought a trailer for the boat!',
-    merchantId: '23433',
-    debit: false,
-    credit: true,
-    amount: 1500
-  },
-  {
-    id: '126',
-    userId: '34',
-    descrip: 'Skis!',
-    merchantId: '23499',
-    debit: false,
-    credit: true,
-    amount: 10000
-  },
-  {
-    id: '127',
-    userId: '36',
-    descrip: 'Liquor at office party',
-    merchantId: '23499',
-    debit: false,
-    credit: true,
-    amount: 340
-  },
-  {
-    id: '128',
-    userId: '35',
-    descrip: 'Backstreet Boys tickets',
-    merchantId: '23499',
-    debit: false,
-    credit: true,
-    amount: 1000
-  }
-]
+import { titleStyle } from '../../globalStyles'
+import { dummyTransData } from '../../../src/dummyData'
 
 export default function Dashboard () {
-  const [data, setData] = useState(dummyData)
+  const [data, setData] = useState(dummyTransData)
   const [filtered, setFiltered] = useState(false)
   const [toggle, setToggle] = useState(false)
 
@@ -82,7 +26,7 @@ export default function Dashboard () {
 
   // function to reset filter
   const handleReset = () => {
-    setData(dummyData)
+    setData(dummyTransData)
     setFiltered(false)
   }
 
@@ -105,8 +49,3 @@ export default function Dashboard () {
     </Fragment>
   )
 }
-
-const titleStyle = css`
-  position: relative;
-  text-align: center;
-`

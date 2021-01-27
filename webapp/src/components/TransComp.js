@@ -6,9 +6,9 @@ import Roman from '../helpers/Roman'
 import RomanContext from './RomanContext'
 import { editLinkStyle } from '../globalStyles'
 import cardImg from '../images/cardImg.png'
+import Fade from 'react-reveal/Fade'
 
 export default function TransComp (props) {
-  // console.log(transInputs)
   const { toggle } = useContext(RomanContext)
 
   return (
@@ -20,7 +20,7 @@ export default function TransComp (props) {
             <th>ID</th>
             <th>User ID</th>
             <th>Description</th>
-            <th>Merchant ID</th>
+            <th>Category</th>
             <th>Debit</th>
             <th>Credit</th>
             <th>Amount</th>
@@ -30,14 +30,16 @@ export default function TransComp (props) {
           {props.data.map((transData) => {
             return (
               <tr key={transData.id}>
-                <td><Link css={editLinkStyle} to={`/transaction-edit/${transData.id}`}>Edit</Link></td>
-                <td>{toggle ? Roman(transData.id) : transData.id}</td>
-                <td>{toggle ? Roman(transData.userId) : transData.userId}</td>
-                <td>{transData.descrip}</td>
-                <td>{toggle ? Roman(transData.merchantId) : transData.merchantId}</td>
-                <td>{transData.debit ? <img alt='credit card icon for debit' src={cardImg} width='20px' /> : ''}</td>
-                <td>{transData.credit ? <img alt='credit card icon for credit' src={cardImg} width='20px' /> : ''}</td>
-                <td>{toggle ? Roman(transData.amount) : transData.amount}</td>
+                <Fade right>
+                  <td><Link css={editLinkStyle} to={`/transaction-edit/${transData.id}`}>Edit</Link></td>
+                  <td>{toggle ? Roman(transData.id) : transData.id}</td>
+                  <td>{toggle ? Roman(transData.userId) : transData.userId}</td>
+                  <td>{transData.descrip}</td>
+                  <td>{transData.category}</td>
+                  <td>{transData.debit ? <img alt='credit card icon for debit' src={cardImg} width='20px' /> : ''}</td>
+                  <td>{transData.credit ? <img alt='credit card icon for credit' src={cardImg} width='20px' /> : ''}</td>
+                  <td>{toggle ? Roman(transData.amount) : transData.amount}</td>
+                </Fade>
               </tr>
             )
           })}
