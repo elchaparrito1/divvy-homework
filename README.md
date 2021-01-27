@@ -1,11 +1,9 @@
-# Divvy Homework Assignment
+# Quick Overview - Divvy Homework Assignment
 
 This repository provides a starting point for a basic React + GraphQL application.
 All of the configuration boilerplate is complete so you can start by writing the code that you want us to see.
 
-Please **fork** this repo to your GitHub account.
-
-## Quick Overview
+## Project Details
 
 This application provides the necessary frontend logic and design to perform the following tasks:
   - Interact with a basic user dashboard interface that allows users to enter, add, and remove transactions from an expense report
@@ -42,6 +40,18 @@ This project is intentionally not utilizing 3rd party services or create-react-a
 **Node** version **12** is the safest NodeJS release to use.  You can try version 14, but there can be node-gyp/python issues on OSX.
 
 ## Installation Instructions
+
+Frontend starter commands from root of project:
+`cd webapp`
+`yarn install`
+`yarn start`
+
+Backend start commands from root of project:
+`cd webserver` or `cd elixir`
+`yarn install`
+`yarn start`
+
+For further instructions of deliverables for this project:
 
 See the [frontend instructions](frontend.md) for frontend focused instructions.
 
