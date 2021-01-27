@@ -22,7 +22,7 @@ export default function UsersComp (props) {
             return (
               <tr key={transData.id}>
                 <Fade left>
-                  <td><button css={submitStyle} onClick={(e) => props.handleToggle(e.target.value)} type='button' value={transData.id}>Edit</button></td>
+                  <td><button css={submitStyle} onClick={(e) => props.handleUserEditOpen(e.target.value)} type='button' value={transData.id}>Edit</button></td>
                   <td>{transData.id}</td>
                   <td>{transData.firstName}</td>
                   <td>{transData.lastName}</td>
@@ -39,5 +39,5 @@ export default function UsersComp (props) {
 
 UsersComp.propTypes = {
   data: PropTypes.array,
-  handleToggle: PropTypes.func
+  handleUserEditOpen: PropTypes.func
 }

@@ -13,30 +13,25 @@ export default function Dashboard () {
   const [filtered, setFiltered] = useState(false)
   const [toggle, setToggle] = useState(false)
 
-  // function to add new transaction to list of total expenditures
-  const handleUpdate = (newValue) => {
+  const handleNewTransaction = (newValue) => {
     setData(data => [...data, newValue])
   }
 
-  // function to filter transactions based on min and max amounts
   const handleFilter = (newData) => {
     setData(newData)
     setFiltered(true)
   }
 
-  // function to reset filter
-  const handleReset = () => {
+  const handleFilterReset = () => {
     setData(dummyTransData)
     setFiltered(false)
   }
 
-  // function to handle roman numeral button toggle in RomanToggleBtn component
-  const handleToggle = () => {
+  const handleRomanToggle = () => {
     setToggle(!toggle)
   }
 
-  // function to remove transaction from table
-  const handleDelete = (val) => {
+  const handleTransDelete = (val) => {
     let deleteData = data
     let newData = deleteData.filter((obj) => obj.id !== parseInt(val))
     setData(newData)
@@ -47,10 +42,10 @@ export default function Dashboard () {
       <PageContainer>
         <h1 css={titleStyle}>EXPENSE REPORT</h1>
         <RomanContext.Provider value={{ toggle }}>
-          <RomanToggleBtn handleToggle={handleToggle} toggle={toggle} />
-          <TransFilter data={data} filtered={filtered} handleFilter={handleFilter} handleReset={handleReset} />
-          <TransComp data={data} handleDelete={handleDelete} />
-          <TransForm handleUpdate={handleUpdate} />
+          <RomanToggleBtn handleRomanToggle={handleRomanToggle} toggle={toggle} />
+          <TransFilter data={data} filtered={filtered} handleFilter={handleFilter} handleFilterReset={handleFilterReset} />
+          <TransComp data={data} handleTransDelete={handleTransDelete} />
+          <TransForm handleNewTransaction={handleNewTransaction} />
         </RomanContext.Provider>
       </PageContainer>
     </Fragment>

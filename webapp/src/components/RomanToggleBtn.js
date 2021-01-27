@@ -12,7 +12,7 @@ export default function RomanToggleBtn (props) {
             checked={props.toggle}
             css={checkboxStyle}
             id='cb'
-            onChange={props.handleToggle}
+            onChange={props.handleRomanToggle}
             style={{ backgroundColor: props.toggle ? '#3acfb6' : 'white' }}
             type='checkbox'
           />
@@ -24,7 +24,7 @@ export default function RomanToggleBtn (props) {
 
 RomanToggleBtn.propTypes = {
   toggle: PropTypes.bool,
-  handleToggle: PropTypes.func
+  handleRomanToggle: PropTypes.func
 }
 
 const checkboxStyle = css`

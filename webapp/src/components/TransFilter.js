@@ -9,7 +9,6 @@ export default function TransFilter (props) {
   const [max, setMax] = useState(0)
   const [err, setErr] = useState('')
 
-  // function to handle filter functionality and edit state of parent component
   const handleFilter = (e) => {
     e.preventDefault()
     if (min <= 0 && max <= 0) {
@@ -24,12 +23,11 @@ export default function TransFilter (props) {
     }
   }
 
-  // function to reset filter parameters
   const handleReset = () => {
     setMin(0)
     setMax(0)
     setErr('')
-    props.handleReset()
+    props.handleFilterReset()
   }
 
   return (
@@ -76,7 +74,7 @@ export default function TransFilter (props) {
 
 TransFilter.propTypes = {
   handleFilter: PropTypes.func,
-  handleReset: PropTypes.func,
+  handleFilterReset: PropTypes.func,
   data: PropTypes.array,
   filtered: PropTypes.bool
 }

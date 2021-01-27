@@ -54,10 +54,9 @@ export default function TransForm (props) {
     )
   }
 
-  // handles submission of created transaction - state gets handled by parent component
-  const handleSubmit = (e) => {
+  const handleNewTransaction = (e) => {
     e.preventDefault()
-    props.handleUpdate(transInputs)
+    props.handleNewTransaction(transInputs)
     setTrans({ ...initialValue, id: transInputs.id + 1 })
     setOpenTrans(false)
   }
@@ -75,7 +74,7 @@ export default function TransForm (props) {
           ? <button css={submitStyle} onClick={() => setOpenTrans(true)}>Transaction+</button>
           : (
             <div css={formStyles}>
-              <form onSubmit={handleSubmit}>
+              <form onSubmit={handleNewTransaction}>
                 <div css={centerRow}>
                   <div css={column}>
                 ID:
@@ -146,7 +145,7 @@ export default function TransForm (props) {
 }
 
 TransForm.propTypes = {
-  handleUpdate: PropTypes.func
+  handleNewTransaction: PropTypes.func
 }
 
 const formStyles = css`

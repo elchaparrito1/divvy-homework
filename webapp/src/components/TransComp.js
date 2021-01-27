@@ -43,7 +43,7 @@ export default function TransComp (props) {
               return (
                 <tr key={transData.id}>
                   <Fade right>
-                    <td><button css={deleteButton} onClick={(e) => props.handleDelete(e.target.value)} value={transData.id}>Remove</button></td>
+                    <td><button css={deleteButton} onClick={(e) => props.handleTransDelete(e.target.value)} value={transData.id}>Remove</button></td>
                     <td>{toggle ? Roman(transData.id) : transData.id}</td>
                     <td>{toggle ? Roman(transData.userId) : transData.userId}</td>
                     <td>{transData.descrip}</td>
@@ -69,7 +69,7 @@ export default function TransComp (props) {
 
 TransComp.propTypes = {
   data: PropTypes.array,
-  handleDelete: PropTypes.func
+  handleTransDelete: PropTypes.func
 }
 
 const deleteButton = css`

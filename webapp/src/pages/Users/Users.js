@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useRef } from 'react'
 import PageContainer from '../../components/PageContainer'
-import UserComp from '../../components/UsersComp'
+import UsersComp from '../../components/UsersComp'
 import { css } from '@emotion/core'
 import { dummyUserData } from '../../dummyData'
 
@@ -17,27 +17,25 @@ export default function Users () {
     dob: ''
   })
 
-  // function to scroll to userform on button click
+  // function to scroll to Usersform on button click
   const scrollToBottom = () => {
     scrollToComp.current.scrollIntoView({ behavior: 'smooth' })
   }
 
-  // function to edit User information
-  const handleUpdate = (e) => {
+  const handleUserInput = (e) => {
     setUserEdit({
       ...userEdit,
       [e.target.name]: e.target.value
     })
   }
 
-  // function to get user
   const getUser = (val) => {
     let dataObj = data
     return dataObj.filter(obj => obj.id === parseInt(val))
   }
 
-  // function to open/close User edit
-  const handleToggle = (val) => {
+  const handleUserEditOpen = (val) => {
+    // go grab user obj based on val
     let user = getUser(val)
     setUserEdit({
       id: user[0].id,
@@ -50,7 +48,7 @@ export default function Users () {
   }
 
   // function to handle the update to a User's information
-  const handleSubmit = (e) => {
+  const handleUserInfoUpdate = (e) => {
     e.preventDefault()
     let newData = data
     newData = newData.map(u => u.id === userEdit.id ? userEdit : u)
@@ -62,14 +60,14 @@ export default function Users () {
     <Fragment>
       <PageContainer>
         <h1 css={titleStyle}>USERS LIST</h1>
-        <UserComp
+        <UsersComp
           data={data}
-          handleToggle={handleToggle}
+          handleUserEditOpen={handleUserEditOpen}
         />
         <div ref={scrollToComp}>
           {openUser && (
             <div css={formStyles}>
-              <form onSubmit={handleSubmit}>
+              <form onSubmit={handleUserInfoUpdate}>
                 <div css={row} style={{ marginBottom: '30px' }}>
                   <div css={column}>
                     <label>
@@ -77,7 +75,7 @@ export default function Users () {
                       <input
                         css={inputStyle}
                         name='id'
-                        onChange={handleUpdate}
+                        onChange={handleUserInput}
                         readOnly
                         style={{ color: '#FF9800', marginBottom: '-5px' }}
                         type='text'
@@ -92,7 +90,7 @@ export default function Users () {
                       <input
                         css={inputStyle}
                         name='dob'
-                        onChange={handleUpdate}
+                        onChange={handleUserInput}
                         style={{ marginBottom: '-5px' }}
                         type='text'
                         value={userEdit.dob}
@@ -108,7 +106,7 @@ export default function Users () {
                       <input
                         css={inputStyle}
                         name='firstName'
-                        onChange={handleUpdate}
+                        onChange={handleUserInput}
                         type='text'
                         value={userEdit.firstName}
                       />
@@ -120,7 +118,7 @@ export default function Users () {
                       <input
                         css={inputStyle}
                         name='lastName'
-                        onChange={handleUpdate}
+                        onChange={handleUserInput}
                         type='text'
                         value={userEdit.lastName}
                       />
