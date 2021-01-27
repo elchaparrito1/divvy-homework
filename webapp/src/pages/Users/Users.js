@@ -4,7 +4,7 @@ import UserComp from '../../components/UsersComp'
 import { css } from '@emotion/core'
 import { dummyUserData } from '../../dummyData'
 
-import { titleStyle, submitStyle, inputStyle } from '../../globalStyles'
+import { titleStyle, submitStyle, inputStyle, row, column } from '../../globalStyles'
 
 export default function Users () {
   const [data, setData] = useState(dummyUserData)
@@ -150,24 +150,6 @@ const formStyles = css`
   }
 
   margin-top: 40px;
-`
-
-const row = css`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: 80%;
-  justify-content: left;
-`
-
-const column = css`
-  display: flex;
-  flex-direction: column;
-  flex-basis: 100%;
-  flex: 0 0 5%;
-  margin: 0 15px;
-  align-self: center;
-  text-align: center;
 `
 
 const spanStyle = css`

@@ -2,7 +2,7 @@
 import React, { useState, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { css } from '@emotion/core'
-import { inputStyle, submitStyle } from '../globalStyles'
+import { inputStyle, submitStyle, column, centerRow } from '../globalStyles'
 import { dummyTransData } from '../dummyData'
 import RemoveDups from '../helpers/RemoveDups'
 
@@ -70,75 +70,77 @@ export default function TransForm (props) {
 
   return (
     <Fragment>
-      {!openTrans
-        ? <button css={submitStyle} onClick={() => setOpenTrans(true)}>Transaction+</button>
-        : (
-          <div css={formStyles}>
-            <form onSubmit={handleSubmit}>
-              <div css={row}>
-                <div css={column}>
+      <div style={{ marginTop: '40px' }}>
+        {!openTrans
+          ? <button css={submitStyle} onClick={() => setOpenTrans(true)}>Transaction+</button>
+          : (
+            <div css={formStyles}>
+              <form onSubmit={handleSubmit}>
+                <div css={centerRow}>
+                  <div css={column}>
                 ID:
-                  <span>{transInputs.id}</span>
-                </div>
-                <div css={column}>
-                  <label>
+                    <span>{transInputs.id}</span>
+                  </div>
+                  <div css={column}>
+                    <label>
                 User:
-                    {returnUsers()}
-                  </label>
-                </div>
-                <div css={column}>
-                  <label>
+                      {returnUsers()}
+                    </label>
+                  </div>
+                  <div css={column}>
+                    <label>
                 Description:
-                    <textarea css={inputStyle}
-                      name='descrip'
-                      onChange={e => setTrans({ ...transInputs, descrip: e.currentTarget.value })}
-                      value={transInputs.descrip}
-                    />
-                  </label>
+                      <textarea css={inputStyle}
+                        name='descrip'
+                        onChange={e => setTrans({ ...transInputs, descrip: e.currentTarget.value })}
+                        value={transInputs.descrip}
+                      />
+                    </label>
+                  </div>
                 </div>
-              </div>
-              <div css={row}>
-                <div css={column}>
-                  <label>
+                <div css={centerRow}>
+                  <div css={column}>
+                    <label>
                 Merchant:
-                    {returnCategories()}
-                  </label>
-                </div>
-                <div css={column}>
-                  <label>
+                      {returnCategories()}
+                    </label>
+                  </div>
+                  <div css={column}>
+                    <label>
                 Credit/Debit:
-                    <select css={selectStyle}
-                      name='mop'
-                      onChange={handleMOP}
-                    >
-                      <option value='credit'>Credit</option>
-                      <option value='debit'>Debit</option>
-                    </select>
-                  </label>
-                </div>
-                <div css={column}>
-                  <label>
+                      <select css={selectStyle}
+                        name='mop'
+                        onChange={handleMOP}
+                      >
+                        <option value='credit'>Credit</option>
+                        <option value='debit'>Debit</option>
+                      </select>
+                    </label>
+                  </div>
+                  <div css={column}>
+                    <label>
                 Amount:
-                    <input css={inputStyle}
-                      name='amount'
-                      onChange={e => setTrans({ ...transInputs, amount: parseInt(e.currentTarget.value) })}
-                      type='number' value={transInputs.amount}
-                    />
-                  </label>
+                      <input css={inputStyle}
+                        name='amount'
+                        onChange={e => setTrans({ ...transInputs, amount: parseInt(e.currentTarget.value) })}
+                        type='number' value={transInputs.amount}
+                      />
+                    </label>
+                  </div>
                 </div>
-              </div>
-              <div css={row}>
-                <div css={column}>
-                  <input css={submitStyle} type='submit' value='Submit' />
+                <div css={centerRow}>
+                  <div css={column}>
+                    <input css={submitStyle} type='submit' value='Submit' />
+                  </div>
+                  <div css={column}>
+                    <button css={submitStyle} onClick={() => setOpenTrans(false)}>Close</button>
+                  </div>
                 </div>
-                <div css={column}>
-                  <button css={submitStyle} onClick={() => setOpenTrans(false)}>Close</button>
-                </div>
-              </div>
-            </form>
-          </div>
-        )
-      }
+              </form>
+            </div>
+          )
+        }
+      </div>
     </Fragment>
   )
 }
@@ -165,22 +167,4 @@ const selectStyle = css`
   border-radius: 4px;
   box-shadow: inset 4px 4px 10px #ddd8dc;
   background: #fff;
-`
-
-const row = css`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: 80%;
-  justify-content: left;
-`
-
-const column = css`
-  display: flex;
-  flex-direction: column;
-  flex-basis: 100%;
-  flex: 0 0 5%;
-  margin: 0 15px;
-  align-self: center;
-  text-align: center;
 `

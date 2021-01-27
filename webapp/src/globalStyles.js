@@ -73,3 +73,29 @@ export const editLinkStyle = css`
   text-decoration: none;
   }
 `
+
+export const row = css`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 80%;
+  justify-content: left;
+`
+
+export const centerRow = css`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
+`
+
+export const column = css`
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 0 0 5%;
+  margin: 0 15px;
+  align-self: center;
+  text-align: center;
+`
